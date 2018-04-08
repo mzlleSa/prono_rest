@@ -59,4 +59,11 @@ public class EquipeDaoImpl implements IEquipeDao {
 		this.jdbcTemplate.update(sql);
 	}
 
+	@Override
+	public List<Equipe> findAll() throws SQLException {
+		String sql = "select * from equipe ";
+		return this.jdbcTemplate.query(sql, (resultSet, rowNum) -> new Equipe(resultSet.getLong("id"),
+				resultSet.getString("identifiant"), resultSet.getInt("poule")));
+	}
+
 }

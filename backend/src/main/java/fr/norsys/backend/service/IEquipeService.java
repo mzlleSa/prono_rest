@@ -17,4 +17,6 @@ public interface IEquipeService {
 
 	 void delete(Long L) throws SQLException;
 
+	List<Equipe> findAll() throws SQLException;
+
 }

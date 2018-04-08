@@ -48,4 +48,9 @@ public class EquipeServiceImpl implements IEquipeService {
 	public void delete(Long idEquipe) throws SQLException {
 		this.equipeDao.delete(idEquipe);
 	}
+
+	@Override
+	public List<Equipe> findAll() throws SQLException {
+		return this.equipeDao.findAll();
+	}
 }

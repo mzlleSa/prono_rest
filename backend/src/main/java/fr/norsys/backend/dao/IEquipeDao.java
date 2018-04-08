@@ -11,4 +11,6 @@ public interface IEquipeDao extends ICommunDao<Equipe> {
 
 	List<Equipe> getEquipesByMatch(Long idMatch) throws SQLException;
 
+	List<Equipe> findAll() throws SQLException;
+
 }
