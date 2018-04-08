@@ -81,4 +81,10 @@ public class MatchDaoImpl implements IMatchDao {
 				resultSet.getLong("id_competition"), resultSet.getBoolean("est_traite"));
 	}
 
+	@Override
+	public void delete(Long idMatch) throws SQLException {
+		String sql = "delete match where id=? ";
+		this.jdbcTemplate.update(sql);
+	}
+
 }

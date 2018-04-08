@@ -82,4 +82,9 @@ public class MatchServiceImpl implements IMatchService {
 		return matchDao.getPlayedMatch();
 	}
 
+	@Override
+	public void delete(Long idMatch) throws SQLException {
+		this.matchDao.delete(idMatch);
+	}
+
 }

@@ -27,4 +27,19 @@ public class ResultatServiceImpl implements IResultatService {
 		return resultatDao.findByIdMatch(idMatch);
 	}
 
+	@Override
+	public int update(Resultat resultat) throws SQLException {
+		return this.resultatDao.update(resultat);
+	}
+
+	@Override
+	public int add(Resultat resultat) throws SQLException {
+		return this.resultatDao.add(resultat);
+	}
+
+	@Override
+	public void delete(Long idResultat) throws SQLException {
+		this.resultatDao.delete(idResultat);
+	}
+
 }

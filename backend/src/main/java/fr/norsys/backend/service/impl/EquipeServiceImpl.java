@@ -33,4 +33,19 @@ public class EquipeServiceImpl implements IEquipeService {
 	public void setEquipeDao(IEquipeDao equipeDao) {
 		this.equipeDao = equipeDao;
 	}
+
+	@Override
+	public int add(Equipe equipe) throws SQLException {
+		return this.equipeDao.add(equipe);
+	}
+
+	@Override
+	public int update(Equipe equipe) throws SQLException {
+		return this.equipeDao.update(equipe);
+	}
+
+	@Override
+	public void delete(Long idEquipe) throws SQLException {
+		this.equipeDao.delete(idEquipe);
+	}
 }

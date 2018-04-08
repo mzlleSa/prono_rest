@@ -15,4 +15,6 @@ public interface IPronosticService {
 
 	int add(Pronostic pronostic) throws SQLException;
 
+	void delete(Long L) throws SQLException;
+
 }

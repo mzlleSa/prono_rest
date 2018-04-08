@@ -97,4 +97,14 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		this.utilisateurDao = utilisateurDao;
 	}
 
+	@Override
+	public int update(Utilisateur utilisateur) throws SQLException {
+		return utilisateurDao.update(utilisateur);
+	}
+
+	@Override
+	public void delete(Long idUtilisateur) throws SQLException {
+		this.utilisateurDao.delete(idUtilisateur);
+	}
+
 }

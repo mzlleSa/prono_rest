@@ -24,4 +24,19 @@ public class CompetitionServiceImpl implements ICompetitionService {
 	public void setDaoCompetition(ICompetitionDao competitionDao) {
 		this.competitionDao = competitionDao;
 	}
+
+	@Override
+	public int add(Competition competition) throws SQLException {
+		return this.competitionDao.add(competition);
+	}
+
+	@Override
+	public int update(Competition competition) throws SQLException {
+		return this.competitionDao.update(competition);
+	}
+
+	@Override
+	public void delete(Long idCompetition) throws SQLException {
+		this.competitionDao.delete(idCompetition);
+	}
 }
