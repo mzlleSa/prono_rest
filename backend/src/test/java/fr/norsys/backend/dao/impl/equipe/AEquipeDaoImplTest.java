@@ -12,7 +12,7 @@ public abstract class AEquipeDaoImplTest {
 
 	@Before
 	public void setUp() {
-		AppConfiguration app = new AppConfiguration();
+		//AppConfiguration app = new AppConfiguration();
 		this.equipeDao = new EquipeDaoImpl(app.getDataSource());
 	}
 }

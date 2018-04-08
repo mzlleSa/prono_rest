@@ -1,8 +1,10 @@
 package fr.norsys.backend.controller.admin;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,4 +34,11 @@ public class AdminMatchController {
 	public void deleteMatch(@PathVariable Long idMatch) throws SQLException {
 		this.matchService.delete(idMatch);
 	}
+//	@GetMapping("/competitions/{idCompetition}/poule/{idPoule}/matchs")
+//	public List<Match> showMatchsForPoule(@PathVariable String idCompetition, @PathVariable String idPoule)
+//			throws SQLException {
+//		return this.matchService.getMatchsPouleWithEquipes(Long.parseLong(idCompetition), Integer.parseInt(idPoule));
+//	}
+
 }
+
