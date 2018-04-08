@@ -37,7 +37,7 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 	public Optional<Utilisateur> findByIdentifiant(String identifiant) throws DataAccessException {
 		String sql = "select * from utilisateur where identifiant=?";
 		List<Utilisateur> utilisateurs = jdbcTemplate.query(sql, statement -> statement.setString(1, identifiant),
-				this::mapUtilisateurThreeArgs);
+				this::mapUtilisateurFourArgs);
 		return utilisateurs.isEmpty() ? Optional.empty() : Optional.of(utilisateurs.get(0));
 	}
 
@@ -45,7 +45,7 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 	public Optional<Utilisateur> findByEmail(String email) throws DataAccessException {
 		String sql = "select * from utilisateur where email=?";
 		List<Utilisateur> utilisateurs = jdbcTemplate.query(sql, statement -> statement.setString(1, email),
-				this::mapUtilisateurThreeArgs);
+				this::mapUtilisateurFourArgs);
 		return utilisateurs.isEmpty() ? Optional.empty() : Optional.of(utilisateurs.get(0));
 	}
 
@@ -56,7 +56,7 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 		List<Utilisateur> utilisateurs = jdbcTemplate.query(sql, statement -> {
 			statement.setString(1, identifiant);
 			statement.setString(2, motDePasse);
-		}, this::mapUtilisateurEightArgs);
+		}, this::mapUtilisateurNineArgs);
 		return utilisateurs.isEmpty() ? Optional.empty() : Optional.of(utilisateurs.get(0));
 	}
 
@@ -64,25 +64,25 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 	public Optional<Utilisateur> findById(Long idUtilisateur) throws SQLException {
 		String sql = "select * from utilisateur where id=?";
 		List<Utilisateur> utilisateurs = jdbcTemplate.query(sql, statement -> statement.setLong(1, idUtilisateur),
-				this::mapUtilisateurEightArgs);
+				this::mapUtilisateurNineArgs);
 		return utilisateurs.isEmpty() ? Optional.empty() : Optional.of(utilisateurs.get(0));
 	}
 
 	@Override
 	public List<Utilisateur> findAll() throws SQLException {
 		String sql = "select * from utilisateur";
-		return jdbcTemplate.query(sql, this::mapUtilisateurEightArgs);
+		return jdbcTemplate.query(sql, this::mapUtilisateurNineArgs);
 	}
 
-	private Utilisateur mapUtilisateurThreeArgs(ResultSet resultSet, int num) throws SQLException {
+	private Utilisateur mapUtilisateurFourArgs(ResultSet resultSet, int num) throws SQLException {
 		return new Utilisateur(resultSet.getString("identifiant"), resultSet.getString("email"),
-				resultSet.getString("mdp"));
+				resultSet.getString("mdp"), resultSet.getString("role"));
 	}
 
-	private Utilisateur mapUtilisateurEightArgs(ResultSet resultSet, int num) throws SQLException {
+	private Utilisateur mapUtilisateurNineArgs(ResultSet resultSet, int num) throws SQLException {
 		return new Utilisateur(resultSet.getLong("id"), resultSet.getString("nom"), resultSet.getString("prenom"),
 				resultSet.getString("email"), resultSet.getString("identifiant"), resultSet.getInt("score"),
-				(Integer) resultSet.getObject("classement"), resultSet.getString("mdp"));
+				(Integer) resultSet.getObject("classement"), resultSet.getString("mdp"), resultSet.getString("role"));
 	}
 
 	@Override

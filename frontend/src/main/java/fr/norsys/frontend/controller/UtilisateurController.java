@@ -55,7 +55,7 @@ public class UtilisateurController {
 		Utilisateur user = restTemplate.postForObject(Url.LOGIN_PROCESS, utilisateur, Utilisateur.class);
 		if (Optional.ofNullable(user).isPresent()) {
 			request.getSession().setAttribute(Constant.UTILISATEUR, user);
-			page = View.REDIRECT_COMPETITIONS;
+			page = this.getPage(user);
 		} else {
 			page = View.LOGIN;
 			model.addAttribute(Constant.ERROR_MESSAGE, Constant.PASSWORD_INVALID_VALUE);
@@ -82,5 +82,9 @@ public class UtilisateurController {
 	private void setAttributeForRestTemplate() {
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+	}
+
+	private String getPage(Utilisateur user) {
+		return user.getRole().equals(Constant.ROLE_ADMIN) ? View.ESPACE_ADMIN : View.REDIRECT_COMPETITIONS;
 	}
 }
