@@ -91,4 +91,8 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 				(Integer) resultSet.getObject("classement"), resultSet.getString("mdp"), resultSet.getString("role"));
 	}
 
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }

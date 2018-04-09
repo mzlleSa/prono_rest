@@ -63,4 +63,8 @@ public class ResultatDaoImpl implements IResultatDao {
 				(Integer) resultSet.getObject("score"));
 	}
 
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }

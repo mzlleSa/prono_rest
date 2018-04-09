@@ -1,18 +1,21 @@
-//package fr.norsys.backend.dao.impl.utilisateur;
-//
-//import org.junit.Before;
-//
-//import fr.norsys.backend.config.AppConfiguration;
-//import fr.norsys.backend.dao.IUtilisateurDao;
-//import fr.norsys.backend.dao.impl.UtilisateurDaoImpl;
-//
-//public abstract class AUtilisateurDaoImplTest {
-//
-//	IUtilisateurDao utilisateurDao;
-//
-//	@Before
-//	public void setUp() {
-//		AppConfiguration app = new AppConfiguration();
-//		this.utilisateurDao = new UtilisateurDaoImpl(app.getDataSource());
-//	}
-//}
+package fr.norsys.backend.dao.impl.utilisateur;
+
+import org.junit.Before;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import fr.norsys.backend.config.AppConfig;
+import fr.norsys.backend.dao.impl.UtilisateurDaoImpl;
+
+public abstract class AUtilisateurDaoImplTest {
+
+	protected UtilisateurDaoImpl utilisateurDao;
+	protected AppConfig appConfig;
+	protected JdbcTemplate jdbcTemplate;
+
+	@Before
+	public void setUp() {
+		this.appConfig = new AppConfig();
+		this.utilisateurDao = new UtilisateurDaoImpl();
+		this.utilisateurDao.setJdbcTemplate(new JdbcTemplate(this.appConfig.getDataSource()));
+	}
+}

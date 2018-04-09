@@ -43,4 +43,8 @@ public class CompetitionDaoImpl implements ICompetitionDao {
 		this.jdbcTemplate.update(sql, idCompetition);
 	}
 
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }

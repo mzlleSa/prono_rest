@@ -93,4 +93,8 @@ public class MatchDaoImpl implements IMatchDao {
 				resultSet.getLong("id_competition"), resultSet.getBoolean("est_traite"));
 	}
 
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }

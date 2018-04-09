@@ -66,4 +66,8 @@ public class EquipeDaoImpl implements IEquipeDao {
 		return new Equipe(resultSet.getLong("id"), resultSet.getString("identifiant"), resultSet.getInt("poule"));
 	}
 
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }

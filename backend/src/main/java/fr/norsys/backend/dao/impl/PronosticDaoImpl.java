@@ -55,4 +55,8 @@ public class PronosticDaoImpl implements IPronosticDao {
 		return new Pronostic(resultSet.getLong("id_utilisateur"));
 	}
 
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }

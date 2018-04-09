@@ -27,4 +27,8 @@ public class Equipe {
 		this.poule = poule;
 	}
 
+	public Equipe(String identifiant) {
+		this.identifiant = identifiant;
+	}
+
 }
