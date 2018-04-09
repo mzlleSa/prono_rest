@@ -29,7 +29,7 @@ public class CompetitionController {
 		return View.COMPETITIONS;
 	}
 
-	@GetMapping(value = "/competition")
+	@GetMapping("/competition")
 	public String showPoulesForCompetition(@RequestParam("id") String id, Model model) {
 		@SuppressWarnings("unchecked")
 		Map<Integer, List<Equipe>> poules = restTemplate

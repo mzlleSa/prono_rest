@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,17 +27,17 @@ public class AdminEquipeController {
 		return this.equipeService.findAll();
 	}
 
-	@PostMapping("/equipe/add")
+	@PostMapping("/equipes")
 	public int addEquipe(@RequestBody Equipe equipe) throws SQLException {
 		return this.equipeService.add(equipe);
 	}
 
-	@PostMapping("/equipe/update")
+	@PutMapping("/equipes")
 	public int updateEquipe(@RequestBody Equipe equipe) throws SQLException {
 		return this.equipeService.update(equipe);
 	}
 
-	@GetMapping("/equipe/delete/{id}")
+	@DeleteMapping("/equipes/{id}")
 	public void deleteEquipe(@PathVariable("id") Long id) throws SQLException {
 		this.equipeService.delete(id);
 	}

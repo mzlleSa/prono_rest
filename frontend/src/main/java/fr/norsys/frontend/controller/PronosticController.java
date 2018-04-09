@@ -28,10 +28,11 @@ import fr.norsys.frontend.constant.View;
 
 @Controller
 public class PronosticController {
+	
 	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 
-	@GetMapping(value = "/pronostic")
+	@GetMapping("/pronostic")
 	public String showPronosticForm(@RequestParam("idMatch") String matchId, Model model, HttpServletRequest request) {
 		Long idMatch = Long.parseLong(matchId);
 		setAttributesForRestTemplate();
@@ -43,7 +44,7 @@ public class PronosticController {
 		return View.PRONOSTIC;
 	}
 
-	@PostMapping(value = "/pronosticProcess")
+	@PostMapping("/pronosticProcess")
 	public ModelAndView pronosticProcess(HttpServletRequest request) {
 		Long idMatch = this.parsLong(Constant.ID_MATCH, request);
 		Pronostic pronostic1 = new Pronostic(getUser(request).getId(), this.parsLong(Constant.FIRST_LABEL, request),

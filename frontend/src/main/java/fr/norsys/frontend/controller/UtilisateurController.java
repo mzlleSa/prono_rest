@@ -30,13 +30,13 @@ public class UtilisateurController {
 	@Autowired
 	RestTemplate restTemplate;
 
-	@GetMapping(value = "/inscription")
+	@GetMapping("/inscription")
 	public String showFormInscription(Model model) {
 		model.addAttribute(Constant.UTILISATEUR, new Utilisateur());
 		return View.INSCRIPTION;
 	}
 
-	@PostMapping(value = "/inscriptionProcess")
+	@PostMapping("/inscriptionProcess")
 	public String processInscription(Model model, @Valid @ModelAttribute Utilisateur utilisateur,
 			BindingResult theBindingResult) {
 		String page;
@@ -50,13 +50,13 @@ public class UtilisateurController {
 		return page;
 	}
 
-	@GetMapping(value = "/login")
+	@GetMapping("/login")
 	public String showFormLogin(Model model) {
 		model.addAttribute(Constant.UTILISATEUR, new Utilisateur());
 		return View.LOGIN;
 	}
 
-	@PostMapping(value = "/loginProcess")
+	@PostMapping("/loginProcess")
 	public String processLoginForm(HttpServletRequest request, Model model, @ModelAttribute Utilisateur utilisateur)
 			throws JsonProcessingException {
 		String page;
@@ -72,7 +72,7 @@ public class UtilisateurController {
 		return page;
 	}
 
-	@GetMapping(value = "/profile")
+	@GetMapping("/profile")
 	public String showUserProfile(HttpServletRequest request, Model model) {
 		setAttributeForRestTemplate();
 		Utilisateur utilisateur = (Utilisateur) request.getSession(false).getAttribute(Constant.UTILISATEUR);
@@ -81,7 +81,7 @@ public class UtilisateurController {
 		return View.PROFILE;
 	}
 
-	@GetMapping(value = "/logout")
+	@GetMapping("/logout")
 	public String logOutProcess(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		session.invalidate();

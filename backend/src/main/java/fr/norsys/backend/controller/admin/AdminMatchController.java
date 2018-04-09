@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,17 +28,17 @@ public class AdminMatchController {
 		return this.matchService.findAll();
 	}
 
-	@PostMapping("/match/add")
+	@PostMapping("/matchs")
 	public void addMatch(@RequestBody Match match) throws SQLException {
 		this.matchService.add(match);
 	}
 
-	@PostMapping("/match/update")
+	@PutMapping("/matchs")
 	public void updateMatch(@RequestBody Match match) throws SQLException {
 		this.matchService.update(match);
 	}
 
-	@GetMapping("/match/delete/{id}")
+	@DeleteMapping("/matchs/{id}")
 	public void deleteMatch(@PathVariable("id") Long id) throws SQLException {
 		this.matchService.delete(id);
 	}
