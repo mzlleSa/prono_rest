@@ -21,5 +21,6 @@ public class Constant {
 	public static final String EST_JOUER = "estJouer";
 	public static final String PRONOSTICS = "pronostics";
 	public static final String USER = "user";
+	public static final String ROLE_ADMIN = "ROLE_ADMIN";
 
 }

@@ -11,5 +11,6 @@ public class View {
 	public static final String LOGIN = "login";
 	public static final String PROFILE = "profile";
 	public static final String INSCRIPTION = "inscription";
+	public static final String ESPACE_ADMIN = "admin";
 
 }
