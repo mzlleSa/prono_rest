@@ -41,4 +41,22 @@ public class EquipeDaoImpl implements IEquipeDao {
 		return new Equipe(resultSet.getLong("id"), resultSet.getString("identifiant"), resultSet.getInt("poule"));
 	}
 
+	@Override
+	public int add(Equipe equipe) throws SQLException {
+		String sql = "INSERT INTO equipe (identifiant,poule) VALUES (?, ?)";
+		return jdbcTemplate.update(sql, equipe.getIdentifiant(), equipe.getPoule());
+	}
+
+	@Override
+	public int update(Equipe equipe) throws SQLException {
+		String sql = "update equipe set identifiant=? , poule=? where id=? ";
+		return this.jdbcTemplate.update(sql, equipe.getIdentifiant(), equipe.getPoule());
+	}
+
+	@Override
+	public void delete(Long idEquipe) throws SQLException {
+		String sql = "delete equipe where id=? ";
+		this.jdbcTemplate.update(sql);
+	}
+
 }

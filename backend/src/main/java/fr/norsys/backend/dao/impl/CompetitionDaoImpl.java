@@ -1,5 +1,6 @@
 package fr.norsys.backend.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,23 @@ public class CompetitionDaoImpl implements ICompetitionDao {
 		return jdbcTemplate.query(sql, (resultSet, rowNum) -> new Competition(resultSet.getLong("id"),
 				resultSet.getString("identifiant"), resultSet.getDate("date_competition")));
 	}
+
+	@Override
+	public int add(Competition competition) throws SQLException {
+		String sql = "INSERT INTO competition (identifiant,date_competition) VALUES (?, ?)";
+		return jdbcTemplate.update(sql, competition.getIdentifiant(), competition.getDateCompetition());
+	}
+
+	@Override
+	public int update(Competition competition) throws SQLException {
+		String sql = "update competition set identifiant=? , date_competition=? where id=? ";
+		return this.jdbcTemplate.update(sql, competition.getIdentifiant(), competition.getDateCompetition());
+	}
+
+	@Override
+	public void delete(Long idCompetition) throws SQLException {
+		String sql = "delete competition where id=? ";
+		this.jdbcTemplate.update(sql);
+	}
+
 }

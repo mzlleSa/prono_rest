@@ -24,4 +24,6 @@ public interface IMatchService {
 
 	int add(Match match) throws SQLException;
 
+	void delete(Long L) throws SQLException;
+
 }

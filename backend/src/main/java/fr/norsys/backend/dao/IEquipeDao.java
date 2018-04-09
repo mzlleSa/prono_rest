@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.norsys.backend.entity.Equipe;
 
-public interface IEquipeDao {
+public interface IEquipeDao extends ICommunDao<Equipe> {
 
 	List<Equipe> getEquipesOfPoule(Long idCompetition, int poule) throws SQLException;
 

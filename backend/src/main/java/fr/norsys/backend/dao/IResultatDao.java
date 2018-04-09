@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import fr.norsys.backend.entity.Resultat;
 
-public interface IResultatDao {
+public interface IResultatDao extends ICommunDao<Resultat> {
 
 	Optional<Resultat> findByIdMatchIdEquipe(Long idMatch, Long idEquipe) throws SQLException;
 

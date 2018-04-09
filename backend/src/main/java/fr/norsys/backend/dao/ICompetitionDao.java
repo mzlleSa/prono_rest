@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.norsys.backend.entity.Competition;
 
-public interface ICompetitionDao {
+public interface ICompetitionDao extends ICommunDao<Competition> {
 
 	List<Competition> findAll() throws SQLException;
 

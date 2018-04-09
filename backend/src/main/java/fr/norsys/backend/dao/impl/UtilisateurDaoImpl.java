@@ -85,4 +85,10 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 				(Integer) resultSet.getObject("classement"), resultSet.getString("mdp"), resultSet.getString("role"));
 	}
 
+	@Override
+	public void delete(Long L) throws SQLException {
+		String sql = "delete utilisateur where id=? ";
+		this.jdbcTemplate.update(sql);		
+	}
+
 }
