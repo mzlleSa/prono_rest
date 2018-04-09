@@ -7,35 +7,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Page d'inscription</title>
+<style>
+.error {
+	color: red
+}
+</style>
 </head>
 <body>
 	<div align="center">
 		<h1>Inscirption</h1>
 		<br />
-		<form:form method="post" action="inscriptionProcess" modelAttribute="utilisateur">
+		<form:form method="post" action="inscriptionProcess"
+			modelAttribute="utilisateur">
 			<table>
 				<tr>
-					<td><label for="nom">Nom</label></td>
+					<td><label for="nom">Nom (*)</label></td>
 					<td><form:input path="nom" id="nom" /></td>
+					<td><form:errors path="nom" cssClass="error" /></td>
 				</tr>
 				<tr>
-					<td><label for="prenom">Prenom</label></td>
+					<td><label for="prenom">Prenom (*)</label></td>
 					<td><form:input path="prenom" id="prenom" /></td>
-
+					<td><form:errors path="prenom" cssClass="error" /></td>
 				</tr>
 				<tr>
-					<td><label for="identifiant">Identifiant</label></td>
+					<td><label for="identifiant">Identifiant (*)</label></td>
 					<td><form:input path="identifiant" id="identifiant" /></td>
+					<td><form:errors path="identifiant" cssClass="error" /></td>
 
 				</tr>
 				<tr>
-					<td><label for="email">Adresse email</label></td>
+					<td><label for="email">Adresse email (*)</label></td>
 					<td><form:input path="email" id="email" /></td>
+					<td><form:errors path="email" cssClass="error" /></td>
 
 				</tr>
 				<tr>
-					<td><label for="mdp">Mot de passe</label></td>
+					<td><label for="mdp">Mot de passe (*)</label></td>
 					<td><form:input path="motDePasse" id="mdp" /></td>
+					<td><form:errors path="motDePasse" cssClass="error" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit"

@@ -4,12 +4,14 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,10 +37,17 @@ public class UtilisateurController {
 	}
 
 	@PostMapping(value = "/inscriptionProcess")
-	public String processInscription(Model model, @ModelAttribute Utilisateur utilisateur) {
+	public String processInscription(Model model, @Valid @ModelAttribute Utilisateur utilisateur,
+			BindingResult theBindingResult) {
+		String page;
 		setAttributeForRestTemplate();
-		restTemplate.postForObject(Url.INSCRIPTION_PROCESS, utilisateur, Utilisateur.class);
-		return View.LOGIN;
+		if (!theBindingResult.hasErrors()) {
+			restTemplate.postForObject(Url.INSCRIPTION_PROCESS, utilisateur, Utilisateur.class);
+			page = View.LOGIN;
+		} else {
+			page = View.INSCRIPTION;
+		}
+		return page;
 	}
 
 	@GetMapping(value = "/login")
