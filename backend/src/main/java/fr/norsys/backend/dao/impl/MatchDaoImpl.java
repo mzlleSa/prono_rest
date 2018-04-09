@@ -20,13 +20,6 @@ public class MatchDaoImpl implements IMatchDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public int add(Match match) throws SQLException {
-		String sql = "insert into match(identifiant,type, date_match,est_jouer, id_competition) values (?, ?, ?, ?)";
-		return this.jdbcTemplate.update(sql, match.getIdentifiant(), match.getType(), match.getDateMatch(),
-				match.isEstJouer(), match.getIdCompetition());
-	}
-
-	@Override
 	public int update(Match match) throws SQLException {
 		String sql = "update match set identifiant=?, type=?, date_match=?, est_jouer=?, id_competition=?, est_traite=? where id=?";
 		return jdbcTemplate.update(sql, match.getIdentifiant(), match.getType(), match.getDateMatch(),
@@ -64,6 +57,25 @@ public class MatchDaoImpl implements IMatchDao {
 		return jdbcTemplate.query(sql, this::mapMatchSevenArgs);
 	}
 
+	@Override
+	public void delete(Long idMatch) throws SQLException {
+		String sql = "delete from match where id=? ";
+		this.jdbcTemplate.update(sql, idMatch);
+	}
+
+	@Override
+	public int add(Match match) throws SQLException {
+		String sql = "insert into match(identifiant,type,date_match,est_jouer,id_competition) values (?, ?, ?, ?)";
+		return this.jdbcTemplate.update(sql, match.getIdentifiant(), match.getType(), match.getDateMatch(),
+				match.isEstJouer(), match.getIdCompetition());
+	}
+
+	@Override
+	public List<Match> findAll() throws SQLException {
+		String sql = "select * from match";
+		return jdbcTemplate.query(sql, this::mapMatchSevenArgs);
+	}
+
 	private Match mapMatchThreeArgs(ResultSet resultSet, int rowNum) throws SQLException {
 		return new Match(resultSet.getLong("id"), resultSet.getString("identifiant"),
 				resultSet.getTimestamp("date_match"));
@@ -79,12 +91,6 @@ public class MatchDaoImpl implements IMatchDao {
 		return new Match(resultSet.getLong("id"), resultSet.getString("identifiant"), resultSet.getString("type"),
 				resultSet.getTimestamp("date_match"), resultSet.getBoolean("est_jouer"),
 				resultSet.getLong("id_competition"), resultSet.getBoolean("est_traite"));
-	}
-
-	@Override
-	public void delete(Long idMatch) throws SQLException {
-		String sql = "delete match where id=? ";
-		this.jdbcTemplate.update(sql);
 	}
 
 }

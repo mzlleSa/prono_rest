@@ -55,10 +55,4 @@ public class PronosticDaoImpl implements IPronosticDao {
 		return new Pronostic(resultSet.getLong("id_utilisateur"));
 	}
 
-	@Override
-	public void delete(Long L) throws SQLException {
-		String sql = "delete pronostic where id_match=? ";
-		 this.jdbcTemplate.update(sql);		
-	}
-
 }

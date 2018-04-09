@@ -28,19 +28,19 @@ public class UtilisateurController {
 	@Autowired
 	private IPronosticService pronosticService;
 
-	@PostMapping(value = "/loginAdminProcess")
+	@PostMapping(value = "/loginProcess")
 	public Utilisateur processLoginForm(@RequestBody Utilisateur utilisateur) throws SQLException {
 		Optional<Utilisateur> user = this.utilisateurService.signOn(utilisateur.getIdentifiant(),
 				utilisateur.getMotDePasse());
 		return user.isPresent() ? user.get() : null;
 	}
 
-	@PostMapping(value = "/inscriptionAdminProcess")
+	@PostMapping(value = "/inscriptionProcess")
 	public void processInscription(@RequestBody Utilisateur utilisateur) throws SQLException {
 		this.utilisateurService.add(utilisateur);
 	}
 
-	@PostMapping(value = "/profileAdmin")
+	@PostMapping(value = "/profile")
 	public Utilisateur showUserProfile(@RequestBody Utilisateur utilisateur) throws SQLException {
 		List<Match> playedMatchs = matchService.getPlayedMatch();
 		playedMatchs.forEach(this::processPlayedMatch);

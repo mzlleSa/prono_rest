@@ -13,4 +13,6 @@ public interface IEquipeDao extends ICommunDao<Equipe> {
 
 	List<Equipe> findAll() throws SQLException;
 
+	void delete(Long idEquipe) throws SQLException;
+
 }

@@ -17,28 +17,28 @@ import fr.norsys.backend.service.IMatchService;
 @RestController
 @RequestMapping("/admin")
 public class AdminMatchController {
+
 	@Autowired
 	private IMatchService matchService;
 
-	@PostMapping("/addMatch")
+	@GetMapping("/matchs")
+	public List<Match> showAllMatchs() throws SQLException {
+		return this.matchService.findAll();
+	}
+
+	@PostMapping("/match/add")
 	public void addMatch(@RequestBody Match match) throws SQLException {
 		this.matchService.add(match);
 	}
 
-	@PostMapping("/updateMatch")
+	@PostMapping("/match/update")
 	public void updateMatch(@RequestBody Match match) throws SQLException {
 		this.matchService.update(match);
 	}
 
-	@PostMapping("/deleteMatch")
-	public void deleteMatch(@PathVariable Long idMatch) throws SQLException {
-		this.matchService.delete(idMatch);
+	@GetMapping("/match/delete/{id}")
+	public void deleteMatch(@PathVariable("id") Long id) throws SQLException {
+		this.matchService.delete(id);
 	}
-//	@GetMapping("/competitions/{idCompetition}/poule/{idPoule}/matchs")
-//	public List<Match> showMatchsForPoule(@PathVariable String idCompetition, @PathVariable String idPoule)
-//			throws SQLException {
-//		return this.matchService.getMatchsPouleWithEquipes(Long.parseLong(idCompetition), Integer.parseInt(idPoule));
-//	}
 
 }
-

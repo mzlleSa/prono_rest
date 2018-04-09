@@ -9,4 +9,6 @@ public interface ICompetitionDao extends ICommunDao<Competition> {
 
 	List<Competition> findAll() throws SQLException;
 
+	void delete(Long idCompetition) throws SQLException;
+
 }

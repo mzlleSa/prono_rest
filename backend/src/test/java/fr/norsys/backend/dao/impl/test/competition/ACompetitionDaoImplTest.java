@@ -1,4 +1,4 @@
-package fr.norsys.backend.dao.impl.test.competition;
+//package fr.norsys.backend.dao.impl.test.competition;
 //package fr.norsys.backend.dao.impl.competition;
 //
 //import org.junit.Before;

@@ -11,12 +11,12 @@ public interface IEquipeService {
 
 	List<Equipe> getEquipesByMatch(Long idMatch) throws SQLException;
 
-	 int add(Equipe equipe) throws SQLException;
-
-	 int update(Equipe equipe) throws SQLException;
-
-	 void delete(Long L) throws SQLException;
-
 	List<Equipe> findAll() throws SQLException;
+
+	int add(Equipe equipe) throws SQLException;
+
+	int update(Equipe equipe) throws SQLException;
+
+	void delete(Long L) throws SQLException;
 
 }

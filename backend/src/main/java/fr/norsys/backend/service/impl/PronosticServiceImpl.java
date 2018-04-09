@@ -40,9 +40,4 @@ public class PronosticServiceImpl implements IPronosticService {
 		return pronosticDao.findByIdMatch(idMatch);
 	}
 
-	@Override
-	public void delete(Long idPronostic) throws SQLException {
-		this.pronosticDao.delete(idPronostic);
-	}
-
 }

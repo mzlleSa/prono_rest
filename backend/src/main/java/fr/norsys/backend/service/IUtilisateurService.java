@@ -28,6 +28,6 @@ public interface IUtilisateurService {
 
 	int update(Utilisateur utilisateur) throws SQLException;
 
-	void delete(Long L) throws SQLException;
+	void delete(Long idUtilisateur) throws SQLException;
 
 }

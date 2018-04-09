@@ -16,4 +16,8 @@ public interface IMatchDao extends ICommunDao<Match> {
 
 	Optional<Match> getById(Long idMatch) throws SQLException;
 
+	void delete(Long idMatch) throws SQLException;
+
+	List<Match> findAll() throws SQLException;
+
 }

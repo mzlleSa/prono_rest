@@ -38,8 +38,13 @@ public class ResultatServiceImpl implements IResultatService {
 	}
 
 	@Override
-	public void delete(Long idResultat) throws SQLException {
-		this.resultatDao.delete(idResultat);
+	public void delete(Long idEquipe, Long idMatch) throws SQLException {
+		this.resultatDao.delete(idEquipe, idMatch);
+	}
+
+	@Override
+	public List<Resultat> findAll() throws SQLException {
+		return this.resultatDao.findAll();
 	}
 
 }

@@ -25,18 +25,18 @@ public class AdminEquipeController {
 		return this.equipeService.findAll();
 	}
 
-	@PostMapping("/addEquipe")
+	@PostMapping("/equipe/add")
 	public int addEquipe(@RequestBody Equipe equipe) throws SQLException {
 		return this.equipeService.add(equipe);
 	}
 
-	@PostMapping("/updateEquipe")
+	@PostMapping("/equipe/update")
 	public int updateEquipe(@RequestBody Equipe equipe) throws SQLException {
 		return this.equipeService.update(equipe);
 	}
 
-	@PostMapping("/deleteEquipe")
-	public void deleteEquipe(@PathVariable Long idEquipe) throws SQLException {
-		this.equipeService.delete(idEquipe);
+	@GetMapping("/equipe/delete/{id}")
+	public void deleteEquipe(@PathVariable("id") Long id) throws SQLException {
+		this.equipeService.delete(id);
 	}
 }

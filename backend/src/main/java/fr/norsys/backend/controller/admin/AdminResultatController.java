@@ -1,8 +1,11 @@
 package fr.norsys.backend.controller.admin;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +21,24 @@ public class AdminResultatController {
 	@Autowired
 	private IResultatService resultatService;
 
-	@PostMapping("/addResultat")
+	@GetMapping("/resultats")
+	public List<Resultat> showAllResultats() throws SQLException {
+		return this.resultatService.findAll();
+	}
+
+	@PostMapping("/resultat/add")
 	public int addResultat(@RequestBody Resultat resultat) throws SQLException {
 		return this.resultatService.add(resultat);
 	}
 
-	@PostMapping("/updateResultat")
+	@PostMapping("/resultat/update")
 	public int updateResultat(@RequestBody Resultat resultat) throws SQLException {
 		return this.resultatService.update(resultat);
 	}
 
-	@PostMapping("/deleteResultat")
-	public void deleteResultat(@RequestBody Long idResultat) throws SQLException {
-		this.resultatService.delete(idResultat);
+	@GetMapping("/resultat/equipe/{idEquipe}/match/{idMatch}/delete")
+	public void deleteResultat(@PathVariable Long idEquipe, @PathVariable Long idMatch) throws SQLException {
+		this.resultatService.delete(idEquipe, idMatch);
 	}
 
 }

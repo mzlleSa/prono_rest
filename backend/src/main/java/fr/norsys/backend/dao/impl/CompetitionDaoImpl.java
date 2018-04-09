@@ -33,13 +33,14 @@ public class CompetitionDaoImpl implements ICompetitionDao {
 	@Override
 	public int update(Competition competition) throws SQLException {
 		String sql = "update competition set identifiant=? , date_competition=? where id=? ";
-		return this.jdbcTemplate.update(sql, competition.getIdentifiant(), competition.getDateCompetition());
+		return this.jdbcTemplate.update(sql, competition.getIdentifiant(), competition.getDateCompetition(),
+				competition.getId());
 	}
 
 	@Override
 	public void delete(Long idCompetition) throws SQLException {
-		String sql = "delete competition where id=? ";
-		this.jdbcTemplate.update(sql);
+		String sql = "delete from competition where id=? ";
+		this.jdbcTemplate.update(sql, idCompetition);
 	}
 
 }

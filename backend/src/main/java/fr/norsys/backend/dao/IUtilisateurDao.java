@@ -18,4 +18,6 @@ public interface IUtilisateurDao extends ICommunDao<Utilisateur> {
 
 	List<Utilisateur> findAll() throws SQLException;
 
+	void delete(Long idUtilisateur) throws SQLException;
+
 }

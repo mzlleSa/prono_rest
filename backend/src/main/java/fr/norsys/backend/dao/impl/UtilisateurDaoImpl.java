@@ -74,6 +74,12 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 		return jdbcTemplate.query(sql, this::mapUtilisateurNineArgs);
 	}
 
+	@Override
+	public void delete(Long idUtilisateur) throws SQLException {
+		String sql = "delete from utilisateur where id=? ";
+		this.jdbcTemplate.update(sql, idUtilisateur);
+	}
+
 	private Utilisateur mapUtilisateurFourArgs(ResultSet resultSet, int num) throws SQLException {
 		return new Utilisateur(resultSet.getString("identifiant"), resultSet.getString("email"),
 				resultSet.getString("mdp"), resultSet.getString("role"));
@@ -83,12 +89,6 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 		return new Utilisateur(resultSet.getLong("id"), resultSet.getString("nom"), resultSet.getString("prenom"),
 				resultSet.getString("email"), resultSet.getString("identifiant"), resultSet.getInt("score"),
 				(Integer) resultSet.getObject("classement"), resultSet.getString("mdp"), resultSet.getString("role"));
-	}
-
-	@Override
-	public void delete(Long L) throws SQLException {
-		String sql = "delete utilisateur where id=? ";
-		this.jdbcTemplate.update(sql);		
 	}
 
 }

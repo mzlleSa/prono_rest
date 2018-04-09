@@ -12,4 +12,8 @@ public interface IResultatDao extends ICommunDao<Resultat> {
 
 	List<Resultat> findByIdMatch(Long idMatch) throws SQLException;
 
+	void delete(Long idEquipe, Long idMatch) throws SQLException;
+
+	List<Resultat> findAll() throws SQLException;
+
 }

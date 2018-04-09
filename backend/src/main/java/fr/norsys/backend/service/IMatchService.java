@@ -18,6 +18,8 @@ public interface IMatchService {
 
 	Optional<Match> getById(Long id) throws SQLException;
 
+	List<Match> findAll() throws SQLException;
+
 	int setTrueForPlayedMatch() throws SQLException;
 
 	int update(Match match) throws SQLException;

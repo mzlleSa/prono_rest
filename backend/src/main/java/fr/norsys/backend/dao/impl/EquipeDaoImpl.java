@@ -33,14 +33,6 @@ public class EquipeDaoImpl implements IEquipeDao {
 		}, this::mapEquipeThreeArgs);
 	}
 
-	private Equipe mapEquipeTwoArgs(ResultSet resultSet, int rowNum) throws SQLException {
-		return new Equipe(resultSet.getLong("id"), resultSet.getString("identifiant"));
-	}
-
-	private Equipe mapEquipeThreeArgs(ResultSet resultSet, int rowNum) throws SQLException {
-		return new Equipe(resultSet.getLong("id"), resultSet.getString("identifiant"), resultSet.getInt("poule"));
-	}
-
 	@Override
 	public int add(Equipe equipe) throws SQLException {
 		String sql = "INSERT INTO equipe (identifiant,poule) VALUES (?, ?)";
@@ -50,13 +42,13 @@ public class EquipeDaoImpl implements IEquipeDao {
 	@Override
 	public int update(Equipe equipe) throws SQLException {
 		String sql = "update equipe set identifiant=? , poule=? where id=? ";
-		return this.jdbcTemplate.update(sql, equipe.getIdentifiant(), equipe.getPoule());
+		return this.jdbcTemplate.update(sql, equipe.getIdentifiant(), equipe.getPoule(), equipe.getId());
 	}
 
 	@Override
 	public void delete(Long idEquipe) throws SQLException {
-		String sql = "delete equipe where id=? ";
-		this.jdbcTemplate.update(sql);
+		String sql = "delete from equipe where id=? ";
+		this.jdbcTemplate.update(sql, idEquipe);
 	}
 
 	@Override
@@ -64,6 +56,14 @@ public class EquipeDaoImpl implements IEquipeDao {
 		String sql = "select * from equipe ";
 		return this.jdbcTemplate.query(sql, (resultSet, rowNum) -> new Equipe(resultSet.getLong("id"),
 				resultSet.getString("identifiant"), resultSet.getInt("poule")));
+	}
+
+	private Equipe mapEquipeTwoArgs(ResultSet resultSet, int rowNum) throws SQLException {
+		return new Equipe(resultSet.getLong("id"), resultSet.getString("identifiant"));
+	}
+
+	private Equipe mapEquipeThreeArgs(ResultSet resultSet, int rowNum) throws SQLException {
+		return new Equipe(resultSet.getLong("id"), resultSet.getString("identifiant"), resultSet.getInt("poule"));
 	}
 
 }

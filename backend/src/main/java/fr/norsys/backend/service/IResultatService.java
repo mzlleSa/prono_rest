@@ -12,9 +12,11 @@ public interface IResultatService {
 
 	List<Resultat> findByIdMatch(Long idMatch) throws SQLException;
 
+	List<Resultat> findAll() throws SQLException;
+
 	int update(Resultat resultat) throws SQLException;
 
 	int add(Resultat resultat) throws SQLException;
 
-	void delete(Long L) throws SQLException;
+	void delete(Long idEquipe, Long idMatch) throws SQLException;
 }

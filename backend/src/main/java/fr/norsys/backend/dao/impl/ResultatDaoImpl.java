@@ -34,11 +34,6 @@ public class ResultatDaoImpl implements IResultatDao {
 		return jdbcTemplate.query(sql, statement -> statement.setLong(1, idMatch), this::mapResultatThreeArgs);
 	}
 
-	private Resultat mapResultatThreeArgs(ResultSet resultSet, int num) throws SQLException {
-		return new Resultat(resultSet.getLong("id_match"), resultSet.getLong("id_equipe"),
-				(Integer) resultSet.getObject("score"));
-	}
-
 	@Override
 	public int add(Resultat resultat) throws SQLException {
 		String sql = "insert into resultat(id_match,id_equipe,score) values (?, ?, ?)";
@@ -48,13 +43,24 @@ public class ResultatDaoImpl implements IResultatDao {
 	@Override
 	public int update(Resultat resultat) throws SQLException {
 		String sql = "update resultat set score=? where id_equipe=? and id_match=?";
-		return this.jdbcTemplate.update(sql, resultat.getIdMatch(), resultat.getIdEquipe(), resultat.getScore());
+		return this.jdbcTemplate.update(sql, resultat.getScore(), resultat.getIdEquipe(), resultat.getIdMatch());
 	}
 
 	@Override
-	public void delete(Long L) throws SQLException {
-		String sql = "delete resultat where id_equipe=? and id_match=? ";
-		this.jdbcTemplate.update(sql);
-
+	public void delete(Long idEquipe, Long idMatch) throws SQLException {
+		String sql = "delete from resultat where id_equipe=? and id_match=? ";
+		this.jdbcTemplate.update(sql, idEquipe, idMatch);
 	}
+
+	@Override
+	public List<Resultat> findAll() throws SQLException {
+		String sql = "select * from resultat";
+		return this.jdbcTemplate.query(sql, this::mapResultatThreeArgs);
+	}
+
+	private Resultat mapResultatThreeArgs(ResultSet resultSet, int num) throws SQLException {
+		return new Resultat(resultSet.getLong("id_match"), resultSet.getLong("id_equipe"),
+				(Integer) resultSet.getObject("score"));
+	}
+
 }

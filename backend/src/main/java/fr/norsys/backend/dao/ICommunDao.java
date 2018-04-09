@@ -8,5 +8,4 @@ public interface ICommunDao<T> {
 
 	public int update(T object) throws SQLException;
 
-	public void delete(Long L) throws SQLException;
 }

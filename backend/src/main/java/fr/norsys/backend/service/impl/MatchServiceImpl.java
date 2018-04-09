@@ -69,14 +69,6 @@ public class MatchServiceImpl implements IMatchService {
 		return matchDao.add(match);
 	}
 
-	public void setMatchDao(IMatchDao matchDao) {
-		this.matchDao = matchDao;
-	}
-
-	public void setEquipeDao(IEquipeDao equipeDao) {
-		this.equipeDao = equipeDao;
-	}
-
 	@Override
 	public List<Match> getPlayedMatch() throws SQLException {
 		return matchDao.getPlayedMatch();
@@ -85,6 +77,19 @@ public class MatchServiceImpl implements IMatchService {
 	@Override
 	public void delete(Long idMatch) throws SQLException {
 		this.matchDao.delete(idMatch);
+	}
+
+	@Override
+	public List<Match> findAll() throws SQLException {
+		return this.matchDao.findAll();
+	}
+
+	public void setMatchDao(IMatchDao matchDao) {
+		this.matchDao = matchDao;
+	}
+
+	public void setEquipeDao(IEquipeDao equipeDao) {
+		this.equipeDao = equipeDao;
 	}
 
 }

@@ -8,6 +8,7 @@ import fr.norsys.backend.entity.Competition;
 public interface ICompetitionService {
 
 	List<Competition> findAll() throws SQLException;
+
 	public int add(Competition competition) throws SQLException;
 
 	public int update(Competition competition) throws SQLException;
