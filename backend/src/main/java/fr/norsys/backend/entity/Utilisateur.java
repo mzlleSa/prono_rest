@@ -57,4 +57,10 @@ public class Utilisateur {
 		this.role = role;
 	}
 
+	public Utilisateur(String identifiant, String email, String motDePasse) {
+		this.email = email;
+		this.identifiant = identifiant;
+		this.motDePasse = motDePasse;
+	}
+
 }

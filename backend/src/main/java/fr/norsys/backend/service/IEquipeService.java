@@ -17,6 +17,6 @@ public interface IEquipeService {
 
 	int update(Equipe equipe) throws SQLException;
 
-	void delete(Long L) throws SQLException;
+	void delete(Long id) throws SQLException;
 
 }

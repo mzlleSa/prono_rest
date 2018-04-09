@@ -7,11 +7,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.norsys.backend.dao.IPronosticDao;
 import fr.norsys.backend.dao.IResultatDao;
 import fr.norsys.backend.dao.IUtilisateurDao;
 import fr.norsys.backend.entity.Pronostic;
 import fr.norsys.backend.entity.Utilisateur;
-import fr.norsys.backend.service.IPronosticService;
 import fr.norsys.backend.service.IUtilisateurService;
 import fr.norsys.backend.util.UtilisateurUtil;
 
@@ -22,7 +22,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 	private IUtilisateurDao utilisateurDao;
 
 	@Autowired
-	private IPronosticService pronosticDao;
+	private IPronosticDao pronosticDao;
 
 	@Autowired
 	private IResultatDao resultatDao;
@@ -105,6 +105,14 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 	@Override
 	public void delete(Long idUtilisateur) throws SQLException {
 		this.utilisateurDao.delete(idUtilisateur);
+	}
+
+	public void setPronosticDao(IPronosticDao pronosticDao) {
+		this.pronosticDao = pronosticDao;
+	}
+
+	public void setResultatDao(IResultatDao resultatDao) {
+		this.resultatDao = resultatDao;
 	}
 
 }

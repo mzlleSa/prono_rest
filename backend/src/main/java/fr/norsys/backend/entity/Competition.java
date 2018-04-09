@@ -23,4 +23,8 @@ public class Competition {
 		this.dateCompetition = dateCompetition;
 	}
 
+	public Competition(String identifiant) {
+		this.identifiant = identifiant;
+	}
+
 }

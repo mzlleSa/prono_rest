@@ -14,23 +14,24 @@ import org.junit.Test;
 
 import fr.norsys.backend.entity.Match;
 
-public class GetNotPlayedMatchTest extends AMatchServiceImplTest {
+public class GetPlayedMatchTest extends AMatchServiceImplTest {
 
 	@Test
-	public void should_get_not_played_match() throws SQLException {
+	public void should_get_played_match() throws SQLException {
 
-		when(this.matchDao.getNotPlayedMatch()).thenReturn(this.notPlayedMatchs());
-		List<Match> matchs = this.matchService.getNotPlayedMatch();
+		when(this.matchDao.getPlayedMatch()).thenReturn(this.PlayedMatchs());
+		List<Match> matchs = this.matchService.getPlayedMatch();
 
 		assertNotNull(matchs);
 		assertTrue(matchs.size() == 2);
-		verify(this.matchDao, times(1)).getNotPlayedMatch();
+		verify(this.matchDao, times(1)).getPlayedMatch();
 	}
 
-	private List<Match> notPlayedMatchs() {
+	private List<Match> PlayedMatchs() {
 		List<Match> matchs = new ArrayList<Match>();
 		matchs.add(new Match());
 		matchs.add(new Match());
 		return matchs;
 	}
+
 }

@@ -47,4 +47,9 @@ public class Match {
 		this.estTraite = estTraite;
 	}
 
+	public Match(long id, String identifiant) {
+		this.id = id;
+		this.identifiant = identifiant;
+	}
+
 }

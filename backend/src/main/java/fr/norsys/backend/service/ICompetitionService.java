@@ -13,6 +13,6 @@ public interface ICompetitionService {
 
 	public int update(Competition competition) throws SQLException;
 
-	public void delete(Long L) throws SQLException;
+	public void delete(Long id) throws SQLException;
 
 }

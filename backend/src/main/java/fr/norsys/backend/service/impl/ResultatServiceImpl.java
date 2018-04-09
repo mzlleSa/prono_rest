@@ -47,4 +47,8 @@ public class ResultatServiceImpl implements IResultatService {
 		return this.resultatDao.findAll();
 	}
 
+	public void setResultatDao(IResultatDao resultatDao) {
+		this.resultatDao = resultatDao;
+	}
+
 }
